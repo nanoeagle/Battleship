@@ -11,71 +11,71 @@ playGame();
 informUserStats();
 
 function playGame() {
-    while ( !isOver() ) {
-        getUserGuess();
-        processGuess();
-    }
+	while ( !isOver() ) {
+		getUserGuess();
+		processGuess();
+	}
 }
 
 function isOver() {
-    return isSunk;
+	return isSunk;
 }
 
 function getUserGuess() {
-    return guess = prompt("Ready, aim, fire! (enter a number 0-6):");
+	return guess = prompt("Ready, aim, fire! (enter a number 0-6):");
 }
 
 function processGuess() {
-    var guessIsValid = (0 <= guess && guess <= 6);
-    if (guessIsValid) {
-        guesses += 1;
-        processValidGuess();
-    } else {
-        processInvalidGuess()
-    }
+	var guessIsValid = (0 <= guess && guess <= 6);
+	if (guessIsValid) {
+		guesses += 1;
+		processValidGuess();
+	} else {
+		processInvalidGuess()
+	}
 }
 
 function processValidGuess() {
-    var guessIsCorrect = 
-        guess == location1 || 
-        guess == location2 || 
-        guess == location3;
-    if (guessIsCorrect) {
-        hitBattleship();
-        diagnoseDamage();
-    } else {
-        processIncorrectGuess();
-    }
+	var guessIsCorrect = 
+		guess == location1 || 
+		guess == location2 || 
+		guess == location3;
+	if (guessIsCorrect) {
+		hitBattleship();
+		diagnoseDamage();
+	} else {
+		processIncorrectGuess();
+	}
 }
 
 function hitBattleship() {
-    hits += 1;
-    alert("HIT!");
+	hits += 1;
+	alert("HIT!");
 }
 
 function diagnoseDamage() {
-    var battleshipIsDestroyed = (hits == 3);
-    if (battleshipIsDestroyed) {
-        processWhenDestroyed();
-    }
+	var battleshipIsDestroyed = (hits == 3);
+	if (battleshipIsDestroyed) {
+		processWhenDestroyed();
+	}
 }
 
 function processWhenDestroyed() {
-    isSunk = true;
-    alert("You sank my battleship!");
+	isSunk = true;
+	alert("You sank my battleship!");
 }
 
 function processIncorrectGuess() {
-    alert("MISS");
+	alert("MISS");
 }
 
 function processInvalidGuess() {
-    alert("Please enter a valid cell number!");
+	alert("Please enter a valid cell number!");
 }
 
 function informUserStats() {
-    alert(
-        "You took " + guesses + " guesses to sink the battleship, " +
-        "which means your shooting accuracy was " + (300/guesses) + "%"
-    );
+	alert(
+		"You took " + guesses + " guesses to sink the battleship, " +
+		"which means your shooting accuracy was " + (300/guesses) + "%"
+	);
 }
