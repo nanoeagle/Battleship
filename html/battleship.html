@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>Battleship</title>
     <link rel="stylesheet" href="../css/battleship.css">
-    <script src="../js/battleship.js" defer></script>
+    <script src="../js/view.js"></script>
+    <script src="../js/boardGame.js"></script>
+    <script src="../js/battleship.js"></script>
   </head>
   <body>
     <div id="board">
       <div id="messageArea"></div>
-
       <table>
         <tr>
           <td id="00"></td>
@@ -75,7 +76,6 @@
           <td id="66"></td>
         </tr>
       </table>
-
       <form id="inputForm">
         <input type="text" id="guessInput" placeholder="e.g. A0">
         <input type="button" id="fireButton" value="Fire!">
