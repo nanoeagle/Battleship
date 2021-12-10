@@ -5,7 +5,33 @@ const directions = {
 
 window.onload = function() {
 	boardGame.generateShipsLocations();
+
+	var guessInput = document.getElementById("guessInput");
+    guessInput.onkeydown = handleKeyPress;
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
 };
+
+function handleKeyPress(event) {
+    var fireButton = document.getElementById("fireButton");
+    if (event.key === "Enter") {
+        fireButton.click();
+        // we return false so the form doesn't do anything else 
+        // (like try to submit itself).
+        return false;
+    }
+}
+
+function handleFireButton() {
+    var guessInput = document.getElementById("guessInput");
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = "";
+}
+
+function gameOver() {
+    return boardGame.sinkAllShips();
+}
 
 function processWhenGameOver() {
 	view.removeInputForm();
